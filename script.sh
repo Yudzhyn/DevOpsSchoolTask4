@@ -69,43 +69,4 @@ echo "[#] Third task done."
 # return to folder with script
 cd .. 
 
-# ---------- 4* -----------
-
-if [ -z "$1" ]
-then
-    echo "[!] There is no log file as argument."
-    echo "[#] Fourth task done."
-    exit
-fi
-
-# file name like first argument
-file_name=${1}
-
-# check if file exists
-if ! [ -f "$file_name" ]; then
-    echo "[-] $file_name not exists."
-    echo "[#] Fourth task done."
-    exit
-fi
-
-ERROR_404_REGEX="\" 404"
-
-# counter
-count_error_messages=0
-
-
-# read each line in the file
-while read line;
-do
-    if [[ "$line" =~ $ERROR_404_REGEX ]]
-    then
-        echo "${line}"
-        count_error_messages=$(($count_error_messages + 1))
-        echo "------------------------------------------------"
-    fi
-done < $file_name
-
-echo "[!] The lines with error message: $count_error_messages"
-echo "[#] Fourth task done."
-
-
+# -------------- END ------------------
